@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+class AuthController extends Controller //Fungsi untuk menuju login page
 {
     public function pagelogin()
     {
         return view('loginpage');
     }
 
-    public function Dashboard()
+    public function Dashboard() //fungsi untuk mengarahkan ke dashboard setelah login dengan membawa beberapa atribut
     {
         $mahasiswa = mahasiswa::all()->count();
 
@@ -30,7 +30,7 @@ class AuthController extends Controller
     }
 
 
-    public function Login(Request $request)
+    public function Login(Request $request) //fungsi login untuk memeriksa kecocokan antara apa yang di inputkan dengan data yang ada di database
     {
         $username = akun::where('username', $request->username)->first();
 

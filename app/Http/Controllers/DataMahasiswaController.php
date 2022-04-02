@@ -9,7 +9,8 @@ use App\Mahasiswa;
 use Illuminate\Support\Facades\Validator;
 class DataMahasiswaController extends Controller
 {
-  public function index(){
+  public function index() //untuk mengarahkan ke section data mahasiswa dengan membawa
+  {
 
     $mahasiswa = mahasiswa::all();
     return view('section.datamahasiswa', ['mahasiswa' => $mahasiswa]);
@@ -22,7 +23,7 @@ class DataMahasiswaController extends Controller
     return view('section.editdata', ['mahasiswa' => $Mahasiswa]);
   }
 
-  public function update(Request $request, $id)
+  public function update(Request $request, $id) //fungsi untuk mengedit lalu mengexport lagi ke database
     {
         $data = $request->all();
 
@@ -40,7 +41,7 @@ class DataMahasiswaController extends Controller
         return redirect()->route('datamahasiswa.index');
     }
 
-    public function destroy($id)
+    public function destroy($id) //fungsi untuk menghapus data di database berdasarkan $id
     {
         $mahasiswa = mahasiswa::findOrFail($id);
 
@@ -53,14 +54,14 @@ class DataMahasiswaController extends Controller
        
     }
 
-    public function create()
+    public function create() // untuk mengarahkan ke menu tambah data
     {
       $mahasiswa = Mahasiswa::all();
 
         return view('section.tambahdata',['mahasiswa' => $mahasiswa]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request) // fungsi untuk menambah data yang di tambahkan ke database
     {
         $data = $request->all();
 

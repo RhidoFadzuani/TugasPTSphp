@@ -12,8 +12,8 @@
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{asset("css/admin.css")}}">
-    
-    
+
+
     @yield('css')
 </head>
 
@@ -24,21 +24,18 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3 class="mb-0">Sistem</h3>
-                <p class="text-white mb-0">Administrai Mahasiswa</p>
+                <p class="text-white mb-0">Administrasi Mahasiswa</p>
             </div>
 
             <ul class="list-unstyled components">
-                
+
                 <li class="{{Request::is('dashboard')?'active':''}}">
                     <a href="{{route ('dashboard')}}">Dashboard</a>
                 </li>
-                {{-- <li class="{{Request::is('pengaduan')?'active':''}}">
-                    <a href="{{route ('pengaduan.index')}}">Pengaduan</a>
-                </li> --}}
-                    <li class="{{Request::is('datamahasiswa')?'active':''}}">
+                <li class="{{Request::is('datamahasiswa')?'active':''}}">
                     <a href="{{route ('datamahasiswa.index')}}">Data Mahasiswa</a>
                 </li>
-                    <li class="{{Request::is('datamahasiswa')?'active':''}}">
+                <li class="{{Request::is('create')?'active':''}}">
                     <a href="{{route ('datamahasiswa.create')}}">tambah data</a>
                 </li>
                 <li class="logout">
@@ -68,18 +65,19 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <a href="" class="btn btn-white btn-sm"></a>
-                       <li class=" nav-item dropdown">
+                            <li class=" nav-item dropdown">
 
-                        <a  aria-haspopup="true" aria-expanded="false">{{Auth::guard('admin')->user()->username ?? ''}}</a>
+                                <a aria-haspopup="true"
+                                    aria-expanded="false">{{Auth::guard('admin')->user()->username ?? ''}}</a>
 
-                        
-                       
+
+
                     </div>
                 </div>
             </nav>
 
 
-                @yield('content')
+            @yield('content')
         </div>
     </div>
 
@@ -102,6 +100,6 @@
     </script>
 
     @yield('js')
-    </body>
+</body>
 
 </html>
